@@ -75,6 +75,17 @@ function App() {
             <code>{mission.command}</code>
           </div>
 
+          <div className="distro-compare">
+            <h3>📦 Distro Comparison</h3>
+            {mission.distroCommands.map((v) => (
+              <div key={v.distro} className="distro-row">
+                <strong>{v.distro}</strong>
+                <code>{v.command}</code>
+                {v.notes && <span className="distro-note">💡 {v.notes}</span>}
+              </div>
+            ))}
+          </div>
+
           <div className="quiz">
             <h3>Mission Checkpoint</h3>
             <p>{mission.question}</p>
