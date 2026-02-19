@@ -209,6 +209,44 @@ code {
 .scenario-item strong { color: #58a6ff; font-family: 'Fira Code', monospace; }
 .scenario-distro { font-size: 0.78rem; color: #3fb950; font-family: 'Fira Code', monospace; }
 
+/* ── Mobile Responsiveness ── */
+@media (max-width: 600px) {
+  .app { padding: 1rem 0.6rem 3rem; }
+
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1rem; }
+
+  .hud {
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .xp-bar-wrap { width: 100px; }
+
+  .card { padding: 0.9rem; }
+
+  .term, .hint, .quiz, .distro-compare { padding: 0.6rem; }
+
+  code {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.45rem;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  .distro-row code { font-size: 0.72rem; }
+
+  .option { gap: 0.4rem; }
+  .option span { font-size: 0.88rem; }
+
+  button { font-size: 0.75rem; padding: 0.45rem 0.7rem; }
+
+  .glossary-search { font-size: 0.8rem; }
+
+  .scenario-item { padding: 0.6rem; }
+}
+
 button {
   margin-top: 0.8rem;
   border: 1px solid #30363d;
