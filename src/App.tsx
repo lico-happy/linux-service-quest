@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { MISSIONS } from './missions'
 import Glossary from './Glossary'
+import ReviewMode, { addMistake, clearMistakes, getMistakes } from './ReviewMode'
 import './App.css'
 
 const STORAGE_KEY = 'linux-service-quest-progress-v1'
@@ -20,6 +21,7 @@ function App() {
   const [hadWrong, setHadWrong] = useState(false)
   const [levelUp, setLevelUp] = useState<number | null>(null)
   const [showGlossary, setShowGlossary] = useState(false)
+  const [showReview, setShowReview] = useState(false)
 
   const mission = MISSIONS[current]
   const progress = useMemo(() => Math.round((current / MISSIONS.length) * 100), [current])
@@ -56,6 +58,7 @@ function App() {
       }, 900)
     } else {
       setHadWrong(true)
+      if (mission) addMistake(mission.id)
       setFeedback('❌ Not quite. Read the hint and try again.')
     }
   }
@@ -63,10 +66,13 @@ function App() {
   const reset = () => {
     localStorage.removeItem(STORAGE_KEY)
     localStorage.removeItem(XP_KEY)
+    clearMistakes()
     setCurrent(0)
     setXp(0)
     setSelected('')
     setHadWrong(false)
+    setShowReview(false)
+    setShowGlossary(false)
     setFeedback('Progress reset. You are back to Mission 1.')
   }
 
@@ -90,13 +96,20 @@ function App() {
         </div>
         <div>Progress: {progress}%</div>
         <button onClick={reset} className="reset">Reset</button>
-        <button onClick={() => setShowGlossary(!showGlossary)} className="reset">
+        <button onClick={() => { setShowGlossary(!showGlossary); setShowReview(false) }} className="reset">
           {showGlossary ? 'Missions' : '📖 Glossary'}
         </button>
+        {getMistakes().length > 0 && (
+          <button onClick={() => { setShowReview(!showReview); setShowGlossary(false) }} className="reset">
+            {showReview ? 'Missions' : `🔄 Review (${getMistakes().length})`}
+          </button>
+        )}
       </section>
 
       {showGlossary ? (
         <Glossary completed={current} onBack={() => setShowGlossary(false)} />
+      ) : showReview ? (
+        <ReviewMode onBack={() => setShowReview(false)} />
       ) : (
       <>
 
