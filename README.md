@@ -2,7 +2,7 @@
 
 An interactive, game-style website to learn **Linux service management** across major distros — with IT/English term explanations built in.
 
-**Live site:** https://licohappy.github.io/linux-service-quest/
+**Live site:** https://lico-happy.github.io/linux-service-quest/
 
 ---
 
@@ -17,7 +17,7 @@ An interactive, game-style website to learn **Linux service management** across 
 
 ## How to use the website
 
-1. **Open the site** → https://licohappy.github.io/linux-service-quest/
+1. **Open the site** → https://lico-happy.github.io/linux-service-quest/
 2. **Click "▶ Start Playing"** on the welcome screen
 3. Each **mission** has:
    - A scenario (what's broken / what needs doing)
@@ -49,15 +49,15 @@ Your progress is saved automatically in your browser (`localStorage`). No accoun
 ## Content
 
 - **16 missions** covering core systemctl commands
-- **2 scenarios** (multi-step incident walkthroughs)
-- **4 distros** compared per mission: Ubuntu/Debian, Fedora/RHEL, Arch, openSUSE
+- **4 scenarios** (multi-step incident walkthroughs): nginx outage, rogue SSH daemon, database disk-full recovery, broken systemd timer
+- **4 distros** compared per mission and in scenarios: Ubuntu/Debian, Fedora/RHEL, Arch, openSUSE
 
 ---
 
 ## Local development
 
 ```bash
-git clone https://github.com/licohappy/linux-service-quest.git
+git clone https://github.com/lico-happy/linux-service-quest.git
 cd linux-service-quest
 npm install
 npm run dev
@@ -67,4 +67,4 @@ Deploys automatically to GitHub Pages on every push to `main`.
 
 ---
 
-Made with ❤️ by [Happy](https://github.com/licohappy)
+Made with ❤️ by [Happy](https://github.com/lico-happy)
